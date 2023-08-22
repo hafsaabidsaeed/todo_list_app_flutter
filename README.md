@@ -52,7 +52,7 @@ To get started with the To-Do List Application, follow these steps:
 
 Clone the Repository: 
 
-Clone this repository to your local machine using git clone https://github.com/yourusername/todo-list-app.git.
+Clone this repository to your local machine using git clone https://github.com/hafsaabidsaeed/todo_list_app_flutter.git.
 
 Flutter Setup: 
 
