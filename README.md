@@ -74,8 +74,5 @@ Feedback and Support
 
 If you encounter any bugs or need assistance with the To-Do List Application, please create an issue in the repository. We value your feedback and will be glad to assist you.
 
-License
-
-The To-Do List Application is open-source and released under the MIT License. You are free to use, modify, and distribute the code as per the terms of this license.
 
 Let's stay organized and get things done with the To-Do List Application! Happy task managing!
