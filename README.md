@@ -6,7 +6,8 @@ A new Flutter project.
 
 Welcome to the repository for the To-Do List Application! This Flutter app aims to help you stay organized and manage your daily tasks efficiently. Whether you're a busy professional, a student, or simply want to keep track of your errands, this app will be your reliable companion in staying on top of your responsibilities.
 
-![Screenshot 1](/assets/images/img.png)
+![Screenshot 1](/assets/images/img.jpg)
+![Screenshot 2](/assets/images/img2.jpg)
 
 Features
 

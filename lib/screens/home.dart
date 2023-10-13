@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
-
 import '../model/todo.dart';
 import '../constants/colors.dart';
 import '../widgets/todo_item.dart';
 
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
+
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
+
 
   @override
   State<Home> createState() => _HomeState();
@@ -26,12 +41,85 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
+      drawer: Drawer(
+          child: ListView(
+            children: [
+
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: tdBGColor,
+                ),
+                padding: EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text('Hafsa Abid', style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 30,
+                    color: tdBlue,
+                    ),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.person, color:tdBlue),
+                title: const Text('View Profile'),
+                onTap: () {   },
+              ),
+              ListTile(
+                leading: const Icon(Icons.star, color:tdBlue ,),
+                title: const Text('Star Tasks'),
+                onTap: () {    },
+              ),
+              ListTile(
+                title: DropdownButton<String>(
+                  value:'All',
+                  onChanged:(String? newValue) {
+                    // Implement what to do when a new value is selected
+                    // For example update a variable or perform some action
+                  },
+                  items: <String>[
+                    'All',
+                    'Work',
+                    'Personal',
+                    'Wishlist',
+                    'Birthday',
+                  ].map<DropdownMenuItem<String>>((String value){
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.format_paint_outlined, color: tdBlue,),
+                title:  const Text('Theme'),
+                onTap: () { },
+              ),
+              ListTile(
+                leading: const Icon(Icons.note_alt_outlined, color: tdBlue,),
+                title: const Text('Feedback'),
+                onTap: () {   },
+              ),
+              ListTile(
+                leading: const Icon(Icons.help, color: tdBlue,),
+                title: const Text('FAQ'),
+                onTap: () {   },
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings, color: tdBlue,),
+                title: const Text('Settings'),
+                onTap: () {   },
+              ),
+            ],
+          ),
+      ),
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 15,
             ),
@@ -42,11 +130,11 @@ class _HomeState extends State<Home> {
                   child: ListView(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(
+                        margin: const EdgeInsets.only(
                           top: 50,
                           bottom: 20,
                         ),
-                        child: Text(
+                        child: const Text(
                           'All ToDos',
                           style: TextStyle(
                             fontSize: 30,
@@ -73,12 +161,12 @@ class _HomeState extends State<Home> {
             child: Row(children: [
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     bottom: 20,
                     right: 20,
                     left: 20,
                   ),
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 5,
                   ),
@@ -96,7 +184,7 @@ class _HomeState extends State<Home> {
                   ),
                   child: TextField(
                     controller: _todoController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: 'Add a new todo item',
                         border: InputBorder.none),
                   ),
@@ -104,24 +192,24 @@ class _HomeState extends State<Home> {
               ),
 
               Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   bottom: 20,
                   right: 20,
                 ),
                 child: ElevatedButton(
-                  child: Text(
-                    '+',
-                    style: TextStyle(
-                      fontSize: 40,
-                    ),
-                  ),
                   onPressed: () {
                     _addToDoItem(_todoController.text);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: tdBlue,
-                    minimumSize: Size(60, 60),
+                    backgroundColor: tdBlue,
+                    minimumSize: const Size(60, 60),
                     elevation: 10,
+                  ),
+                  child: const Text(
+                    '+',
+                    style: TextStyle(
+                      fontSize: 40,
+                    ),
                   ),
                 ),
               ),
@@ -184,14 +272,14 @@ class _HomeState extends State<Home> {
   // Search Box
   Widget searchBox() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextField(
         onChanged: (value) => _runFilter(value),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           contentPadding: EdgeInsets.all(0),
           prefixIcon: Icon(
             Icons.search,
@@ -213,15 +301,12 @@ class _HomeState extends State<Home> {
   //App Bar
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: tdBGColor,
+      backgroundColor: tdBlue,
       elevation: 0,
       title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Icon(
-          Icons.menu,
-          color: tdBlack,
-          size: 30,
-        ),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Icon(Icons.menu, color: tdBlue,),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
